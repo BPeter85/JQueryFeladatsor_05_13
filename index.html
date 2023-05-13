@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Feladatsor</title>
+    <style>
+        #doboz {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            border: 1px solid black;
+        }
+
+        #kep {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>1. Feladat:</p>
+    <button type="button" id="megjelenitoGomb">Megjelenítés</button>
+    <button type="button" id="elrejtoGomb">Elrejtés</button>
+    <div id="doboz"></div>
+    <hr>
+    <p>2. Feladat:</p>
+    Ide írd a szöveget: <input type="text" id="szovegMezo" />
+    <p>Karakterek száma: <span id="darabSzam">0</span> db</p>
+    <hr>
+    <p>3. Feladat:</p>
+    Ide írd a szöveget: <input type="text" id="elrejtMegjelenitSzoveg" />
+    <button type="button" id="elrejtoGomb2">Szöveg elrejtése</button>
+    <button type="button" id="megjelenitoGomb2">Szöveg megjelenitése</button>
+    <hr>
+    <p>4. Feladat:</p>
+    <input type="number" id="vizHomerseklet" min="-200" max="200" value="0" />
+    <br> <img src="water.jpg" alt="viz" title="viz" id="kep">
+    <p id="vizHalmazallapot">víz</p>
+    <hr>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#megjelenitoGomb").click(function () {
+                $("#doboz").fadeOut(1000);
+            });
+            $("#elrejtoGomb").click(function () {
+                $("#doboz").fadeIn(1000);
+            });
+
+            i = 0;
+
+            $("#szovegMezo").keypress(function () {
+                $("#darabSzam").text(i += 1);
+            });
+
+            $("#elrejtoGomb2").click(function () {
+                $("#elrejtMegjelenitSzoveg").attr("type", "password");
+            });
+
+            $("#megjelenitoGomb2").click(function () {
+                $("#elrejtMegjelenitSzoveg").attr("type", "text");
+            });
+
+            $("#vizHomerseklet").keyup(function () {
+                if ($("#vizHomerseklet").val() > 100) {
+                    $("#vizHalmazallapot").text("gőz");
+                    $('img').attr('src', 'steam.jpg');
+                } else if ($("#vizHomerseklet").val() < 0) {
+                    $("#vizHalmazallapot").text("jég");
+                    $('img').attr('src', 'ice.jpg');
+                } else {
+                    $("#vizHalmazallapot").text("víz");
+                    $('img').attr('src', 'water.jpg');
+                }
+            });
+
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
